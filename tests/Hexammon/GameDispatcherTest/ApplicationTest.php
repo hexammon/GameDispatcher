@@ -16,6 +16,10 @@ class ApplicationTest extends TestCase
         $owner = $this->createMock(UserInterface::class);
         $gameConfig = $this->createMock(GameConfigurationInterface::class);
         $application->createRoom($owner, $gameConfig);
-        $this->assertCount(1, $application->getRooms());
+        $rooms = $application->getRooms();
+        $this->assertCount(1, $rooms);
+        $room = $rooms[0];
+        $this->assertSame($owner, $room->getOwner());
+        $this->assertSame($gameConfig, $room->getGameConfig());
     }
 }
