@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  game-server:
+    image: ${DEV_DOCKER_IMAGE}
+    build:
+      args:
+        - BASE_DOCKER_IMAGE=${BASE_DOCKER_IMAGE}
+      context: docker/php/dev
