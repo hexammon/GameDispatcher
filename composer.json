@@ -4,7 +4,8 @@
     "require": {
         "voryx/thruway": "^0.5.0",
         "free-elephants/jwt": "^0.3.0",
-        "free-elephants/di": "^1.6"
+        "free-elephants/di": "^1.6",
+        "lootils/uuid": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.4"
