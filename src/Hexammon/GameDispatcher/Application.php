@@ -2,6 +2,8 @@
 
 namespace Hexammon\GameDispatcher;
 
+use Hexammon\GameDispatcher\Wamp\AuthorizationManager;
+
 class Application
 {
 
@@ -9,9 +11,19 @@ class Application
      * @var iterable|Room[]
      */
     private $rooms = [];
+    /**
+     * @var AuthorizationManager
+     */
+    private $authorizationManager;
 
-    public function __construct()
+    public function __construct(AuthorizationManager $authorizationManager)
     {
+        $this->authorizationManager = $authorizationManager;
+    }
+
+    public function run()
+    {
+        $this->authorizationManager->init();
     }
 
     public function createRoom(UserInterface $owner, GameConfigurationInterface $gameConfig)

@@ -5,6 +5,7 @@ namespace Hexammon\GameDispatcherTest;
 use Hexammon\GameDispatcher\Application;
 use Hexammon\GameDispatcher\GameConfigurationInterface;
 use Hexammon\GameDispatcher\UserInterface;
+use Hexammon\GameDispatcher\Wamp\AuthorizationManager;
 use PHPUnit\Framework\TestCase;
 
 class ApplicationTest extends TestCase
@@ -12,7 +13,10 @@ class ApplicationTest extends TestCase
 
     public function testCreateGameWorker()
     {
-        $application = new Application();
+        $authManager = $this->createMock(AuthorizationManager::class);
+
+        $application = new Application($authManager);
+
         $owner = $this->createMock(UserInterface::class);
         $gameConfig = $this->createMock(GameConfigurationInterface::class);
 
